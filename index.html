@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Опрос</title>
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="shortcut icon" href="./assets/images/apple-touch-icon.svg" type="image/png">
+  <link rel="stylesheet" href="./assets/css/jquery.fias.min.css">
+</head>
+<body>
+  <header class="container">
+    <img src="./assets/images/head_logo.png" class="header_logo">
+    <nav>
+      <ul class="menu">
+        <li class="menu__item">
+          <a href="http://archksakhalin.ru/" class="menu__link">НАШ САЙТ</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="quiz">
+      <h1 class="quiz__header">ОПРОС</h1>
+
+      <h4>Контактные данные</h4>
+
+      <div class="quiz__item w-100">
+        <label for="fio">Компания</label>
+        <input type="text" class="city form-control" id="company" placeholder='ООО "Ресурсы"'>
+      </div>
+
+      <div class="quiz__item w-100">
+        <label for="fio">ФИО</label>
+        <input type="text" class="city form-control" id="fio" placeholder="Иванов Александр Алексеевич">
+      </div>
+      
+      <div class="quiz__item w-100">
+        <label for="email">Email</label>
+        <input type="text" class="city form-control" id="email" placeholder="example@yandex.ru">
+      </div>
+
+      <div class="quiz__item w-100">
+        <label for="phone">Телефон</label>
+        <input type="text" class="city form-control" id="phone" placeholder="8(999) 111-22-33">
+      </div>
+
+      <hr>
+      <h4>Вакансия</h4>
+      
+      <div class="quiz__body">
+        <div class="quiz__item w-100">
+          <label for="">Город</label>
+          <input type="text" class="city form-control" id="city" placeholder="Начните вводить адрес...">
+        </div>
+
+        <div class="quiz__item w-100">
+          <label for="department">Отрасль</label>
+          <select name="" class="department form-control" id="department">
+            <option>Строительство</option>
+            <option>IT и телеком</option>
+            <option>Образование и воспитание</option>
+            <option>Менеджмент и управление</option>
+            <option>Сфера услуг</option>
+            <option>Транспорт и логистика</option>
+            <option>Производство</option>
+            <option>Здравоохранение</option>
+            <option>Безопасность</option>
+            <option>Торговля и финансы</option>
+            <option id='option-self-departament'>Свой вариант</option>
+          </select>
+        </div>
+
+        <div class="quiz__item w-100 quiz__item_hidden">
+          <label for="self-departament">Свой вариант(Отрасль)</label>
+          <input type="text" class="form-control" id="self-departament">
+        </div>
+
+        <div class="quiz__item">
+          <label for="">Специальность</label>
+          <input type="text" class="specialty form-control" id="specialty" placeholder="Сварочное производство">
+        </div>
+
+        <div class="quiz__item">
+          <label for="">Количество сотрудников</label>
+          <input type="text" class="count form-control" id="count" placeholder="5">
+        </div>
+
+        <div class="quiz__item quiz__item_radio">
+          <label>Длительность</label>
+          <div class="quiz__item_radio-body">
+            <div>
+              <input type="radio" name="time" id="full-time" checked>
+              <label for="full-time">Полная занятость</label>
+            </div>
+
+            <div>
+              <input type="radio" name="time" id="part-time">
+              <label for="part-time">Частичная занятость</label>
+            </div>
+
+            <div class="d-flex self-time">
+              <input type="radio" name="time" id="flex-time" class="d-flex my-auto me-1">
+              <label for="flex-time">Гибкий график</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz__item">
+          <label for="">Оплата</label>
+          <input type="text" class="payment form-control" id="payment" placeholder="50 000 Р">
+        </div>
+
+        <div class="quiz__item">
+          <label for="">Образование</label>
+          <input type="text" class="education form-control" id="education" placeholder="Учебное заведение">
+        </div>
+
+        <div class="quiz__item w-100">
+          <label for="">Опыт</label>
+          <select name="" id="experience" class="form-control">
+            <option value="Не обязателен">Не обязателен</option>
+            <option value="Желателен">Желателен</option>
+            <option value="От 1 года">От 1 года</option>
+            <option value="От 1 до 3 лет">От 1 до 3 лет</option>
+            <option value="Более 3 лет">Более 3 лет</option>
+          </select>
+        </div>
+
+        <div class="quiz__item w-100">
+          <label for="">Коментарии</label>
+          <textarea class="form-control" id="comment"></textarea>
+        </div>
+
+        <div class="quiz__item d-flex w-100">
+          <input type="checkbox" class="mt-1 me-2" id="students"></input>
+          <label for="students">Готов сотрудничать с университетами и колледжами</label>
+        </div>
+      </div>
+
+      <button class="send btn btn-success" id="send">Отправить</button>
+    </section>
+
+    <section class="modal" id="modal">
+      <div class="modal__container">
+        <p>Вы успешно отправили заявку!</p>
+        <div class="modal__btn">
+          <button class="send btn btn-success" onclick="closeModal()">Закрыть</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer container">
+      <div class="footer__header">
+        <span># Кадры Сахалина</span>
+      </div>
+      <div class="footer__body">
+        <div class="footer__info">
+          <div class="footer__item">
+            <img src="./assets/images/home.png" alt="">
+            <span>г. Южно-Сахалинск, ул. Комсомольская 259 В, офис 602</span>
+          </div>
+          <div class="footer__item">
+            <img src="./assets/images/phone.png" alt="">
+            <span>+7 (4242) 311-414</span>
+          </div>
+          <div class="footer__item">
+            <img src="./assets/images/comp.png" alt="">
+            <span>info@archksakhalin.ru</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+<script src="./assets/script/jquery.min.js"></script>
+<script src="./assets/script/jquery.maskedinput.min.js"></script>
+<script src="./assets/script/jquery.fias.min.js"></script>
+<script src="./assets/script/index.js"></script>
+</html>
