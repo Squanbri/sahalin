@@ -18,7 +18,7 @@
   $sheet->setCellValue('F1', 'Отрасль');
   $sheet->setCellValue('G1', 'Специальность');
   $sheet->setCellValue('H1', 'Количество сотрудников');
-  $sheet->setCellValue('I1', 'Длительность');
+  $sheet->setCellValue('I1', 'Условия');
   $sheet->setCellValue('J1', 'Оплата');
   $sheet->setCellValue('K1', 'Образование');
   $sheet->setCellValue('L1', 'Опыт');
@@ -29,7 +29,7 @@
   $result = $link->query($sql);
   $interviews = array();
   while($row = $result->fetch_assoc()) {
-      array_push($interviews, mb_convert_encoding($row, 'UTF-8', 'UTF-8'));
+      array_push($interviews, $row);
   }
 
   foreach ($interviews as $index => $interview) {

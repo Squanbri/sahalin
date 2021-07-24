@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="shortcut icon" href="./assets/images/apple-touch-icon.svg" type="image/png">
   <link rel="stylesheet" href="./assets/css/jquery.fias.min.css">
+  <link rel="stylesheet" href="./assets/css/jquery-ui.min.css">
 </head>
 <body>
   <header class="container">
@@ -30,98 +31,81 @@
 
       <div class="quiz__item w-100">
         <label for="fio">Компания</label>
-        <input type="text" class="city form-control" id="company" placeholder='ООО "Ресурсы"'>
+        <input type="text" class="form-control" id="company" placeholder='ООО "Ресурсы"'>
       </div>
 
       <div class="quiz__item w-100">
         <label for="fio">ФИО</label>
-        <input type="text" class="city form-control" id="fio" placeholder="Иванов Александр Алексеевич">
+        <input type="text" class="form-control" id="fio" placeholder="Иванов Александр Алексеевич">
       </div>
       
       <div class="quiz__item w-100">
         <label for="email">Email</label>
-        <input type="text" class="city form-control" id="email" placeholder="example@yandex.ru">
+        <input type="text" class="form-control" id="email" placeholder="example@yandex.ru">
       </div>
 
       <div class="quiz__item w-100">
         <label for="phone">Телефон</label>
-        <input type="text" class="city form-control" id="phone" placeholder="8(999) 111-22-33">
+        <input type="text" class="form-control" id="phone" placeholder="8(999) 111-22-33">
       </div>
-
-      <hr>
-      <h4>Вакансия</h4>
       
       <div class="quiz__body">
+        <hr>
+        <h4>Вакансия 1</h4>
+
         <div class="quiz__item w-100">
           <label for="">Город</label>
-          <input type="text" class="city form-control" id="city" placeholder="Начните вводить адрес...">
+          <input type="text" class="city form-control" placeholder="Начните вводить адрес...">  <!-- Город -->
         </div>
 
         <div class="quiz__item w-100">
           <label for="department">Отрасль</label>
-          <select name="" class="department form-control" id="department">
-            <option>Строительство</option>
-            <option>IT и телеком</option>
-            <option>Образование и воспитание</option>
-            <option>Менеджмент и управление</option>
-            <option>Сфера услуг</option>
-            <option>Транспорт и логистика</option>
-            <option>Производство</option>
-            <option>Здравоохранение</option>
-            <option>Безопасность</option>
-            <option>Торговля и финансы</option>
-            <option id='option-self-departament'>Свой вариант</option>
-          </select>
-        </div>
-
-        <div class="quiz__item w-100 quiz__item_hidden">
-          <label for="self-departament">Свой вариант(Отрасль)</label>
-          <input type="text" class="form-control" id="self-departament">
+          <input type="text" class="department form-control" placeholder="Строительство">  <!-- Город -->
         </div>
 
         <div class="quiz__item">
           <label for="">Специальность</label>
-          <input type="text" class="specialty form-control" id="specialty" placeholder="Сварочное производство">
+          <input type="text" class="specialty form-control specialty" placeholder="Сварочное производство">  <!-- Специальность -->
         </div>
 
         <div class="quiz__item">
           <label for="">Количество сотрудников</label>
-          <input type="text" class="count form-control" id="count" placeholder="5">
+          <input type="text" class="count form-control count" placeholder="5">  <!-- Количество сотрудников -->
         </div>
 
         <div class="quiz__item quiz__item_radio">
-          <label>Длительность</label>
+          <label>Условия</label>
           <div class="quiz__item_radio-body">
             <div>
-              <input type="radio" name="time" id="full-time" checked>
-              <label for="full-time">Полная занятость</label>
+              <input class="full-time" type="radio" name="time1" id="full-time1" checked>  <!-- Полная занятость -->
+              <label for="full-time1">Полная занятость</label>
             </div>
 
             <div>
-              <input type="radio" name="time" id="part-time">
-              <label for="part-time">Частичная занятость</label>
+              <input class="part-time" type="radio" name="time1" id="part-time1">  <!-- Частичная занятость -->
+              <label for="part-time1">Частичная занятость</label>
             </div>
 
             <div class="d-flex self-time">
-              <input type="radio" name="time" id="flex-time" class="d-flex my-auto me-1">
-              <label for="flex-time">Гибкий график</label>
+              <input type="radio" name="time1" class="d-flex my-auto me-1 flex-time" id="flex-time1">  <!-- Гибкая занятость -->
+              <label for="flex-time1">Гибкий график</label>
             </div>
           </div>
         </div>
 
         <div class="quiz__item">
           <label for="">Оплата</label>
-          <input type="text" class="payment form-control" id="payment" placeholder="50 000 Р">
+          <input type="text" class="payment form-control payment" placeholder="50 000 Р">  <!-- Оплата -->
         </div>
 
         <div class="quiz__item">
           <label for="">Образование</label>
-          <input type="text" class="education form-control" id="education" placeholder="Учебное заведение">
+          <input type="text" class="education form-control education" placeholder="Высшее">  <!-- Образование -->
         </div>
 
         <div class="quiz__item w-100">
           <label for="">Опыт</label>
-          <select name="" id="experience" class="form-control">
+          <select class="form-control experience">  <!-- Опыт -->
             <option value="Не обязателен">Не обязателен</option>
             <option value="Желателен">Желателен</option>
             <option value="От 1 года">От 1 года</option>
@@ -132,15 +116,18 @@
 
         <div class="quiz__item w-100">
           <label for="">Коментарии</label>
-          <textarea class="form-control" id="comment"></textarea>
+          <textarea class="form-control comment"></textarea>  <!-- Коментарии -->
         </div>
 
         <div class="quiz__item d-flex w-100">
-          <input type="checkbox" class="mt-1 me-2" id="students"></input>
-          <label for="students">Готов сотрудничать с университетами и колледжами</label>
+          <input type="checkbox" class="mt-1 me-2 students" id="students1"></input>  <!-- Студенты -->
+          <label for="students1">Готов сотрудничать с университетами и колледжами</label>
         </div>
       </div>
 
+      <div class="d-flex">
+        <button class="add-person btn btn-success" id="addPerson">Добавить вакансию</button>
+      </div>
       <button class="send btn btn-success" id="send">Отправить</button>
     </section>
 
@@ -148,7 +135,7 @@
       <div class="modal__container">
         <p>Вы успешно отправили заявку!</p>
         <div class="modal__btn">
-          <button class="send btn btn-success" onclick="closeModal()">Закрыть</button>
+          <button class="send btn btn-success" onclick="document.location.reload()">Закрыть</button>
         </div>
       </div>
     </section>
@@ -182,5 +169,6 @@
 <script src="./assets/script/jquery.min.js"></script>
 <script src="./assets/script/jquery.maskedinput.min.js"></script>
 <script src="./assets/script/jquery.fias.min.js"></script>
+<script src="./assets/script/jquery-ui.min.js"></script>
 <script src="./assets/script/index.js"></script>
 </html>

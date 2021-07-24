@@ -104,6 +104,13 @@ hr {
   margin-bottom: 10px;
 }
 
+.add-person {
+  width: 200px;
+  height: 40px;
+  margin: 45px 15px;
+  margin-top: 0;
+}
+
 .send {
   width: 115px;
   margin-left: 15px;
@@ -121,24 +128,6 @@ hr {
   background-color: rgb(59,188,212) !important;
   border-color: rgb(59,188,212);  
   box-shadow: 0 0 0 0.25rem rgb(59 188 212 / 50%) !important;
-}
-
-.self-time .is-invalid {
-  border: 1px solid red;
-  border-radius: 3px;
-  padding: 1px;
-}
-
-.self-time input[type='date']{
-  width: 138px;
-}
-#self-time {
-  margin-top: 7px !important;
-}
-#from-date {
-  position: relative;
-  left: 9px;
-  margin-bottom: 10px;
 }
 
 footer {
