@@ -1,0 +1,39 @@
+.contacts {
+  height: auto;
+  color: var(--dark) !important;
+}
+
+.contacts-list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 40px;
+  
+  width: 100%;
+  list-style-type: none;
+  margin: 135px auto 75px auto;
+  
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  width: 100%;
+  max-width: 465px;
+  
+  cursor: pointer;
+}
+
+.contact-item:hover {
+  color: var(--dark-blue);
+}
+
+.contact-item:first-child:hover {
+  color: var(--dark);
+  cursor: default;
+}
+
+.contact-item h2 {
+  font-weight: 400;
+}

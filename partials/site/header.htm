@@ -1,0 +1,20 @@
+==
+<div {{ this.page.id == 'main' ? "class='header header_light'" : "class='header header_dark'" }}>
+  <div class="header__wrapper wrapper">
+    <a href="/" class="header_left">
+      <img class="header-logo" src="{{ 'assets/icons/logo.png' | theme }}">
+    </a>
+    <div class="header_right">
+      <nav class="header-navbar">
+        <ul class="navbar-links">
+          <li class="navbar-links__item"><a href="{{ '/' }}" {{ this.page.id == '/' ? "class='link text-red'" : "class='link'" }}>О проекте</a></li>
+          <li class="navbar-links__item"><a href="{{ '/golosovanie' }}" {{ this.page.id == 'golosovanie' ? "class='link text-red'" : "class='link'" }}>Голосование</a></li>
+          <li class="navbar-links__item"><a href="{{ '/kontakty' }}" {{ this.page.id == 'kontakty' ? "class='link text-red'" : "class='link'" }}>Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+    
+    <button class="header-btn"><span class="burger-stick"/></button>
+    <img src="{{ 'assets/images/pattern.svg' | theme }}" class="header-burger__patern">
+  </div>
+</div>

@@ -1,0 +1,133 @@
+title = "Кандидаты"
+url = "/kandidaty/:id"
+layout = "default"
+is_hidden = 0
+
+[builderList]
+modelClass = "Squanbri\Vote\Models\Candidates"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "fio"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<?php
+function onStart()
+{
+  $id = $this->param('id');
+  $this['district'] = Db::select('select * from squanbri_vote_districts where id = ?', [$id])[0]->district;
+  if ($id < 18) $this['nextDistrict'] = Db::select('select * from squanbri_vote_districts where id = ?', [$id+1])[0]->district;
+  
+  //var_dump($this['candidates']);
+  
+  $this['disabled'] = (isset($_COOKIE["vote"])) ? 'data-voted' : '';
+}
+
+
+function onVote()
+{
+  $id = post('id');
+  $candidates = Db::select('select * from squanbri_vote_candidates where id = ?', [$id])[0];
+  
+  $votes = $candidates->numbers_vote + 1;
+  $candidates->numbers_vote = $votes;
+  Db::update("update squanbri_vote_candidates set numbers_vote = $votes where id = ?", [$id]);
+  setcookie("vote", "yes");
+}
+?>
+==
+<link rel="stylesheet" href="{{ 'assets/css/candidate.css'|theme }}">
+
+<section class="breadcrumbs">
+  <div class="breadcrumbs__wrapper wrapper">
+    <a href="{{ '/' }}" class="text-grey">Главная</a>
+    <a href="{{ '/golosovanie' }}" class="text-grey">Голосование</a>
+    <a href="#" class="text-dark">Кандидаты</a>
+  </div>
+</section>
+
+<section class="instruction">
+  <div class="instruction__wrapper wrapper">
+    <div class="instruction-bar">
+      <span class="instruction__item">Откройте карточку<br>муниципалитета</span>
+      <hr class="instruction__hr">
+      <span class="instruction__item">Выберите достойного<br>кандитата из списка</span>
+      <hr class="instruction__hr">
+      <span class="instruction__item">Проголосуйте<br>за него</span>
+    </div>
+  </div>
+</section>
+
+<section class="section district-header">
+  <div class="disrict-header__wrapper wrapper">
+    <h1 class="text-dark">Городской округ<br>«{{district}}»</h1>
+  </div>
+</section>
+
+<section class="candidates">
+  <div class="candidates__wrapper wrapper">
+    <ul class="candidates-list">
+      <button class="candidate-list__to-top"><img src="{{ 'assets/icons/to-top.svg'|theme }}" alt=""></button>
+      {% set candidates = builderList.records%}
+      {% set id_district = this.param['id'] %}
+
+      {% for candidate in candidates %}
+      {% if candidate.id_district == id_district %}
+
+
+      
+ 
+      <li class="candidate-item">
+        <div class="candidate-item__grad candidate-item__gradient"></div>
+        <button class="candidate-item__close-btn">&#10006;</button>
+        <div class="candidate-item_left">
+          <img src="{{ candidate.photo.path }}" alt="img" class="candidate-item__img">
+        </div>
+        <h3 class="candidate-item__name">{{ candidate.fio }}</h3>
+        <span class="candidate-item__date">{{ candidate.dates }}</span>
+        <p class="candidate-item__description">
+          <b>{{ candidate.summary }}</b> <br>
+          {{ candidate.info }}
+        </p>
+        <div class="candidate-item__btn-group">
+          <button class="btn btn-grey candidate-item__btn" {{ disabled }} data-name="{{ candidate.fio }}"
+            onclick="$(this).request('onVote',{ data: {id : {{candidate.id}}} });">Проголосовать</button>
+            <span class="candidate-item__votes">Голосов: {{ candidate.numbers_vote }}</span>
+          <div class="candidate-item__links">
+            <a href='https://www.facebook.com/sharer.php?u=http://65.amstroy.info/kandidaty/' class="facebook-btn section-links__item"><img src="{{ 'assets/icons/fb.png' | theme }}"></a>
+            <a href='http://vk.com/share.php?url=http://65.amstroy.info/kandidaty/&title={{ candidate.fio }}&description={{ candidate.info }}&image={{ candidate.photo.path }}&noparse=true' class="vkontakte-btn section-links__item"><img src="{{ 'assets/icons/vk.png' | theme }}"></a>
+            <a href= 'https://connect.ok.ru/offer?url=http://65.amstroy.info/kandidaty/' class="odnoklasniki-btn section-links__item"><img src="{{ 'assets/icons/od.png' | theme }}"></a>
+          </div>
+        </div>
+      </li>
+
+      {% endif %}
+      {% endfor %}
+
+    </ul>
+  </div>
+</section>
+
+<section class="come-back">
+  <div class="come-back__wrapper wrapper">
+    <a href="{{ '/golosovanie' }}" class="come-back__link">
+      <img src="{{ 'assets/icons/back_arrow_.png' | theme}}" alt="back_arrow">
+      <span>Вернуться назад</span>
+    </a>
+
+    {% if id_district < 18%} <a href="{{ '/kandidaty/' }}{{ id_district+1 }}" class="come-back__link">
+      <span>{{ nextDistrict }} городской округ</span>
+      <img src="{{ 'assets/icons/next_arrow.png' | theme}}" alt="next_arrow">
+      </a>
+
+      {% endif %}
+  </div>
+</section>
+
+
+<section class="modal" id="modal-vote"></section>
+
+
+<script src="{{ 'assets/js/candidate.js'|theme }}"></script>

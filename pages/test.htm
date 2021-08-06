@@ -1,0 +1,47 @@
+title = "Test"
+url = "/test"
+layout = "default"
+is_hidden = 0
+
+[builderList]
+modelClass = "Squanbri\Vote\Models\Districts"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "fio"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<?php
+function onCalculate()
+{
+  $id = post('id');
+  $candidates = Db::select('select * from squanbri_vote_candidates where id = ?', [$id])[0];
+  print_r($id);
+  print_r("<br>\n");
+  print_r($candidates);
+  
+  $votes = $candidates->numbers_vote + 1;
+  $candidates->numbers_vote = $votes;
+  Db::update("update squanbri_vote_candidates set numbers_vote = $votes where id = ?", [$id]);
+}
+?>
+==
+{% set records = builderList.records %}
+
+<hr style="margin-top: 200px">
+
+<ul class="record-list">
+    {% for record in records %}
+        <li>
+          <a href="/id={{record.id}}">
+            {{ record.id }};
+            {{ record.district }};
+          
+            <!-- <button data-request="onCalculate" data-requset-data="var: 123">Проголосовать</button> -->
+            <button onclick="$(this).request('onCalculate',{ data: {id : {{record.id}}} });">Проголосовать</button>
+          </a>
+        </li>
+    {% endfor %}
+</ul>

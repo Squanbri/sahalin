@@ -1,0 +1,189 @@
+.municipalities {
+  height: auto;
+  position: relative;
+}
+
+.municipalities__patern {
+  position: absolute;
+  transform: rotate(140deg);
+  top: -60vw;
+  right: -25vw;
+  opacity: 40%;
+  z-index: -3;
+  filter: brightness(0.75);
+  width: 110vw;
+}
+
+.municipalities-list {
+  width: 100%;
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.municipalities-list__item {
+  background-color: var(--light);
+  border-radius: 4px;
+  border: 1px solid #ECF1F8;
+  display: flex;
+}
+
+.municipalities-list__link {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+}
+
+.municipalitie__index {
+  min-width: 48px;
+  max-width: 48px;
+  height: 48px;
+  width: 48px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F5F9FF;
+  border-radius: 50%;
+  -webkit-text-stroke: 1px var(--blue);
+  font-weight: 700;
+  font-size: 24px;
+  -webkit-text-fill-color: white;
+  pointer-events: none;
+}
+
+.municipalitie__info {
+  justify-content: space-between;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 63%;
+  padding: 10px 0;
+  pointer-events: none;
+}
+
+.municipalitie__title {
+  font-size: 16px;
+  font-weight: 500;
+  pointer-events: none;
+  overflow-wrap: break-word;
+}
+
+.municipalitie__count-candidates {
+  margin-top: 4px;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.municipalitie__arrow {
+  height: 100%;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #ECF1F8;
+  pointer-events: none;
+}
+
+.municipalitie__arrow svg {
+  color: var(--grey);
+  width: 20px;
+}
+
+
+.municipalities-list__link:hover {
+  background-color: var(--blue);
+  border-radius: 4px;
+}
+
+.municipalities-list__link:hover 
+.municipalitie__index {
+  background-color: var(--blue);
+}
+
+.municipalities-list__link:hover 
+.municipalitie__title,
+.municipalities-list__link:hover 
+.municipalitie__count-candidates {
+  color: var(--light) !important;
+}
+
+.municipalities-list__link:hover 
+.municipalitie__arrow {
+  border-left: 0;
+}
+
+.municipalities-list__link:hover 
+.municipalitie__arrow svg {
+  color: var(--light);
+}
+
+
+.come-back {
+  height: 220px;
+}
+
+.come-back__wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.come-back__link {
+  text-decoration: none;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 500;
+
+  position: absolute;
+  top: 80px;
+}
+
+@media screen and (max-width: 991px) {
+  .municipalitie__arrow {
+    display: none;
+  }
+  .municipalities__patern {
+    width: 150vw;
+    filter: brightness(0.2);
+  }
+}
+@media screen and (max-width: 575px) {
+  .municipalities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .municipalitie__info {
+    font-size: 14px;
+    width: 100%;
+    max-width: none;
+    justify-content: center;
+  }
+  .municipalitie__index {
+    min-width: none;
+    max-width: none;
+    height: 48px;
+    width: 24px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light);
+    -webkit-text-stroke: 1px var(--blue);
+    font-weight: 700;
+    font-size: 24px;
+    pointer-events: none;
+  }
+  .municipalities-list__item {
+    height: 90px;
+  }
+}
+
+
+

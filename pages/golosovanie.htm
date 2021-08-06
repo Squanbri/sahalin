@@ -1,0 +1,91 @@
+title = "Голосование"
+url = "/golosovanie"
+layout = "default"
+is_hidden = 0
+==
+<?php
+function setCountCandidates($count) {
+  if (($count % 10 >= 5 && $count % 10 <= 9) || ($count % 10 == 0) || (n/10 == 1)) {
+    return "$count кандидатов"; 
+  }
+  else if ($count % 10 == 1) {
+    return "$count кандидат";
+  }
+  else {
+    return "$count кандидата";
+  }
+}
+
+function onStart()
+{
+  $this['districts'] = Db::select('select * from squanbri_vote_districts');
+  
+  foreach ($this['districts'] as $district) {
+    $count = count(Db::select('select * from squanbri_vote_candidates where id_district = ?', [$district->id]));
+    if (($count % 10 >= 5 && $count % 10 <= 9) || ($count % 10 == 0) || ($count/10 == 1)) {
+      $district->count = "$count кандидатов"; 
+    }
+    else if ($count % 10 == 1) {
+      $district->count ="$count кандидат";
+    }
+    else {
+      $district->count = "$count кандидата";
+    }
+  }
+}
+?>
+==
+<link href="{{ 'assets/css/vote.css'|theme }}" rel="stylesheet">
+
+<section class="breadcrumbs">
+  <div class="breadcrumbs__wrapper wrapper">
+    <a href="{{ '/' }}" class="text-grey">Главная</a>
+    <a href="#" class="text-dark">Голосование</a>
+  </div>
+</section>
+
+<section class="instruction">
+  <div class="instruction__wrapper wrapper">
+    <div class="instruction-bar">
+      <span class="instruction__item">Откройте карточку<br>муниципалитета</span>
+      <hr class="instruction__hr">
+      <span class="instruction__item">Выберите достойного<br>кандитата из списка</span>
+      <hr class="instruction__hr">
+      <span class="instruction__item">Проголосуйте<br>за него</span>
+    </div>
+  </div>
+</section>
+
+<section class="municipalities">
+  <img src="{{ 'assets/images/pattern.svg' | theme}}" class="municipalities__patern">
+  <div class="municipalities__wrapper wrapper">
+    <ul class="municipalities-list">
+      
+      {% for index, district in districts %}
+        <li class="municipalities-list__item">
+          <a href="kandidaty/{{index+ 1}}" class="municipalities-list__link">
+            <span class="municipalitie__index">{{index+ 1}}</span>
+            <div class="municipalitie__info">
+              <span class="municipalitie__title text-dark">Городской округ <br>«{{district.district}}»</span>
+              <span class="municipalitie__count-candidates text-grey">{{district.count}}</span>
+            </div>
+            <div class="municipalitie__arrow">
+              <svg xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="come-back">
+  <div class="come-back__wrapper wrapper">
+    <a href="{{ '/' }}" class="come-back__link">
+      <img src="{{ 'assets/icons/back_arrow_.png' | theme}}" alt="back_arrow">
+      <span>Вернуться назад</span>
+    </a>
+  </div>
+</section>
+
+<script src="{{ 'assets/js/vote.js'|theme }}"></script>

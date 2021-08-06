@@ -1,0 +1,111 @@
+title = "Главная"
+url = "/"
+layout = "default"
+is_hidden = 0
+==
+<section class="section section-main">
+  <video class="video-background" autoplay="autoplay" loop="loop" muted>  <!-- video player -->
+    <source src="{{'assets/videos/main.mp4' | theme }}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+  </video>
+  <div class="section__body wrapper">
+    <div class="section__body_left">
+      <div class="section-main-links section-links">
+        <a class="section-links__item" href=""> <img src="{{ 'assets/icons/vk.png' | theme }}" class="section-links__img"> </a>
+        <a class="section-links__item" href=""> <img src="{{ 'assets/icons/fb.png' | theme }}" class="section-links__img"> </a>
+        <a class="section-links__item" href=""> <img src="{{ 'assets/icons/od.png' | theme }}" class="section-links__img"> </a>
+      </div>
+    </div>
+    <div class="section__body_right">
+      <h1 class="section-main__header text-light">Наша история — в ваших руках</h1>
+      <span class="section-main__text text-light">
+        Областной проект «Эстафета «Сахалинские аллеи» в честь празднования 75-летия образования Сахалинской области.
+      </span>
+      <div class="section-main__buttons section-buttons">
+        <a href="{{ '/golosovanie' }}" class="btn btn-red">Голосование</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-meaning text-dark">
+  <div class="section__body wrapper">
+    <div class="section__body_left">
+      <span class="section-subtitle text-dark">Главное</span>
+    </div>
+    <div class="section__body_right">
+      <h4 class="section-header text-dark">Суть проекта</h4>
+      <span class="section-text text-dark">
+        В регионе стартовал проект «Эстафета «Сахалинские аллеи».
+        В рамках проекта будут определены 75 сахалинцев, внесших
+        вклад в развитие области с момента ее основания.<br><br>
+
+        Жителям Анивского городского округа предлагается
+        самостоятельно определить место высадки саженцев для
+        будущей аллеи, где установят памятные знаки с именами предложенных
+        жителями кандидатов и описанием их заслуг в развитии района.<br><br>
+
+        В ходе проекта на территории Сахалинской области
+        появится 18 аллей с более 800 высаженными деревьями.⠀
+      </span>
+    </div>
+  </div>
+</section>
+
+<section class="section section-vote-info">
+  <div class="section__body wrapper">
+    <div class="section__body_left">
+      <span class="section-subtitle text-light">Зачем мне голосовать?</span>
+    </div>
+    <div class="section__body_right">
+      <h4 class="section-header text-light">Виртуальное голосование</h4>
+      <span class="section-text text-light">
+        Очень важно, чтобы на территории Сахалинской области, 
+        в памяти людей остался след тех сахалинцев, которые помогали 
+        в становлении и развитии нашего региона. В этом году серебряные волонтеры вместе с активными жителями муниципальных образований высадят в аллеях саженцы.<br><br>
+
+        В следующем году пройдет эстафета знаменосцев, объединяющая всю область. Сахалинские аллеи и эстафета 75-летия помогут отдать дань памяти значимым сахалинским личностям, о которых в регионе, возможно, знают не все.<br><br>
+
+        С помощью виртуального голосования Вы можете помочь нам в выборе достойного кандидата, имя которого будет увековечено.
+      </span>
+    </div>
+  </div>
+</section>
+
+<section class="section section-vote">
+  <img src="{{ 'assets/images/pattern.svg' | theme }}" class="section__patern">
+  <div class="section__body wrapper">
+    <div class="section__body_left">
+    </div>
+    <div class="section__body_right">
+      <h4 class="section-header text-dark">Как проголосовать<br>за кандидата</h4>
+      <span class="section-text text-dark">
+        На этом сайте необходимо перейти в раздел <b>«Голосование».</b><br>
+        Выбрать муниципалитет, который выдвигает важного<br>
+        для Вас человека и нажать на кнопку <b>«Проголосовать»</b>.
+      </span>
+      <div class="section-buttons">
+        <a href="{{ '/golosovanie' }}" class="btn btn-red">Голосование</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-latest-events">
+  <div class="section__body wrapper">
+    <div class="section__body_left">
+    </div>
+    <div class="section__body_right">
+      <h4 class="section-header text-light">Последние события</h4>
+      <span class="section-text text-light">
+        Принято 145 заявок от 18 муниципалитетов.<br>
+        Этап голосования граждан.
+      </span>
+      <div class="section-muted">
+        <img src="{{ 'assets/icons/clock.png' | theme }}" alt="clock" class="section-latest-events__icon-clock">
+        <span class="text-light">Вчера в 22:00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{{ 'assets/js/main.js'|theme }}"></script>
